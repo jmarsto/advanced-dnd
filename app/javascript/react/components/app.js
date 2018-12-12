@@ -1,9 +1,14 @@
 import React from 'react'
+import { DragDropContext } from 'react-beautiful-dnd';
 import initialData from '../src/initialData'
 import Column from './column'
 
 class App extends React.Component {
   state = initialData;
+
+  onDragEnd = result => {
+
+  };
 
   render() {
     const columns = this.state.columnOrder.map((columnId) => {
@@ -15,9 +20,11 @@ class App extends React.Component {
       )
     })
     return (
-      <div>
-        {columns}
-      </div>
+        <DragDropContext onDragEnd={this.onDragEnd}>
+          <div>
+            {columns}
+          </div>
+        </DragDropContext>
     )
   }
 }

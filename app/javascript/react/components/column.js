@@ -1,3 +1,4 @@
+import { Droppable } from 'react-beautiful-dnd';
 import React from 'react';
 import Task from './task';
 
@@ -6,9 +7,20 @@ class Column extends React.Component {
     return (
       <div className="container">
         <h3 className="title">{this.props.column.title}</h3>
-        <div className="task-list">
-          {this.props.task.map(task => <Task key={task.id} task={task} />)}
-        </div>
+        <Droppable droppableId={this.props.column.id}>
+          {(provided) => (
+            <div
+              className="task-list"
+              innerRef={provided.innerRef}
+              {...provided.droppableProps}
+            >
+              {this.props.task.map((task, index) => (
+                <Task key={task.id} task={task} index={index} />
+              ))}
+              {provided.placeholder}
+            </div>
+          )}
+        </Droppable>
       </div>
     )
   }
