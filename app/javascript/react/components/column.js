@@ -11,7 +11,7 @@ class Column extends React.Component {
           {(provided) => (
             <div
               className="task-list"
-              innerRef={provided.innerRef}
+              ref={provided.innerRef}
               {...provided.droppableProps}
             >
               {this.props.task.map((task, index) => (
