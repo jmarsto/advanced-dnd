@@ -50,7 +50,7 @@ class App extends React.Component {
     })
     return (
         <DragDropContext onDragEnd={this.onDragEnd}>
-          <div>
+          <div className="drag-drop">
             {columns}
           </div>
         </DragDropContext>
