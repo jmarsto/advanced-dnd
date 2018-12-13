@@ -5,12 +5,12 @@ class Task extends React.Component {
   render() {
     return (
       <Draggable draggableId={this.props.task.id} index={this.props.index} >
-        {(provided) => (
+        {(provided, snapshot) => (
           <div
             className="task-container"
             {...provided.draggableProps}
             {...provided.dragHandleProps}
-            innerRef={provided.innerRef}
+            ref={provided.innerRef}
           >
             {this.props.task.content}
           </div>
